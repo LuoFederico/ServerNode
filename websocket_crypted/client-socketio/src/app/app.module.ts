@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SocketService } from './socket.service';
+import { CesarService } from './cesar.service';
 
 const config: SocketIoConfig = { url: 'https://3000-green-chimpanzee-ej9vm93z.ws-eu03.gitpod.io/',  options: {/*transport : ['websocket'], withCredentials:false*/} };
 
@@ -15,7 +16,7 @@ const config: SocketIoConfig = { url: 'https://3000-green-chimpanzee-ej9vm93z.ws
     BrowserModule,
     SocketIoModule.forRoot(config),
   ],
-  providers: [SocketService],
+  providers: [SocketService, CesarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

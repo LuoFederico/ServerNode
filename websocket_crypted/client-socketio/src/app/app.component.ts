@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { SocketService } from './socket.service';
-
+import { CesarService } from './cesar.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,9 +14,9 @@ export class AppComponent {
   }
 
   sendMessage(message: HTMLInputElement) {
-    this.socketService.sendMessage(message.value);
-
-    console.log("sent: " + message.value)
+    let encoded = this.cesarService.encode(message.value, 10);
+    this.socketService.sendMessage(encoded);
+    //console.log("sent: " + message.value)
     message.value="";
   }
   ngOnInit() {
@@ -27,4 +27,5 @@ export class AppComponent {
       });
   }
 }
+
 
